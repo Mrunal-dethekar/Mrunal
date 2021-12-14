@@ -1,0 +1,24 @@
+body{
+    background-color: lightgreen;
+    padding-top: 50px;
+    
+}
+.product{
+    display: flex;
+    width: 600px ;
+    height: 620px;
+    background: white;
+    margin:auto;
+    
+}
+.product-photo{
+    background-color: white;
+    position: fixed;
+    width: ;
+}
+.photo-container{
+    background-color: greenyellow;
+    border-radius: 5px;
+    position: relative;
+    margin: 40px 60px 0 0;
+}

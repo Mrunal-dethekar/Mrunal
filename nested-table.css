@@ -1,0 +1,27 @@
+table, th, td{
+    border: 2px solid black;
+    text-align:center;
+  }
+  .table2{
+      width:300px ;
+  }
+  .table1{
+      margin: 50px 0;
+      width: 300px;
+  }
+  .table3{
+      width: 100%;
+      margin: 20px 0;
+  }
+.table4{
+    width: 100%;
+    margin: 20px 0;
+
+}
+.htm{
+color: white;
+background-color: black;
+}
+.bl{
+    color: blue;
+}
