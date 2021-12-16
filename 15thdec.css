@@ -1,0 +1,17 @@
+.alert{
+margin: 0 20% 0 10%;
+}
+.btn.btn-primary.position-relative.btn-my{
+    margin-left: 30%;
+}
+.badge-1, .accordion-1, .alert-1, .card-1{
+    margin-top: 30px;
+    margin-left: 40px;
+}
+h1{
+    text-decoration: underline;
+    color: greenyellow;
+}
+.card{
+    margin-left: 30%;
+}
