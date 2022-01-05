@@ -1,0 +1,29 @@
+.static{
+    margin: 30px;
+    width: 200px;
+    height: 200vh;
+    background-color: yellow;
+}
+.relative{
+    position: relative;
+    left : 20px;
+    height: 20vh;
+    background-color: red;
+}
+.absolute{
+    position: absolute;
+    top:0;
+    right: 0;
+    background-color: greenyellow;
+}
+.fixed{
+    position: fixed;
+    background-color: white;
+    /* top: 100px; */
+}
+.sticky{
+    position: sticky;
+    top: 0px;
+    margin: 0 10px 0 10px;
+    background-color: blue;
+}
