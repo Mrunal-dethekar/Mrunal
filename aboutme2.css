@@ -1,0 +1,24 @@
+.outer{
+    z-index: 2;
+
+}
+.data{
+    box-sizing: border-box;
+}
+.profile{
+
+}
+.about{
+
+}
+.photo{
+    
+}
+img{
+    box-sizing: border-box;
+    width:  200px;
+    height: 200px;
+}
+.skills{
+    
+}
