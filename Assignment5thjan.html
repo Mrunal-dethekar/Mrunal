@@ -10,17 +10,17 @@
         let mrunal = {
             batch: 'Batch 11',
             country: 'India',
-            randomNo: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            randomNo: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17],
             xyz: function () {
-                var n = 0;
-                for (j = 0; j < 15; j++) {
-                    var a = this.randomNo[j]
+                var n = [];
+                for (i = 0; i < mrunal.randomNo.length; i++) {
+
                     var b = 0;
-                    for (i = 2; i <= a/2; i++) {
-                        if (a % i == 0) { b++; }
+                    for (j = 2; j * j <= this.randomNo[i]; j++) {
+                        if (this.randomNo[i] % j == 0) { b++; break; }
                     }
                     if (b == 0) {
-                        n++;
+                        n.push(this.randomNo[i])
                     }
                 }
                 console.log(n)
