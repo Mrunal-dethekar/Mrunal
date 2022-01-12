@@ -15,7 +15,7 @@ function major(arr,n)
 //   }
 
 arr.sort((a,b)=>a-b)
-return arr[Math.floor(n/2)]
+return arr[Math.floor(n/2 )]
 }
 let a=[2,3,2,3,2]
 console.log(major(a,a.length))
