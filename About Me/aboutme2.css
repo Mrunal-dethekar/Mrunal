@@ -1,24 +1,36 @@
-.outer{
-    z-index: 2;
-
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.data{
+*{
     box-sizing: border-box;
 }
-.profile{
-
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 10px 10px 5px 20px lightgrey;
+    z-index: 2;
+    padding: 30px 3px  ;
+    margin-top: 10%;
 }
-.about{
-
+.col1, .col2{
+    max-width: 800px;
+}
+.row1{
+    display: flex;
+    flex-wrap: wrap;
 }
 .photo{
-    
+    flex: 40%;
 }
-img{
-    box-sizing: border-box;
-    width:  200px;
-    height: 200px;
+.data{
+    flex: 60%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
 }
-.skills{
-    
+.col1{
+    margin-right:10px ;
 }
+/* @media (max-width:800px) */

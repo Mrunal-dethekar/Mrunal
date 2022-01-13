@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <Script>
+
+        let arr = [3, 5, 7, 9]
+        // let newArry=arr.filter((e)=>{
+        //     return e%2==0
+        // })
+        // if(arr==newArry){
+        //     console.log("YES")
+        // }else{
+        //     console.log("NO")
+        // }
+        // let newArr=arr.filter((e)=>{
+        //     return e%2==0
+        // })
+        // if(newArr.length !=0){
+        //     console.log("YES")
+        // }else{
+        //     console.log("NO")
+        // }
+        let onePrime = arr.some((e) => {
+            let flag = true
+            for (let i = 2; i*i < e; i++) {
+                if (e % i == 0) {
+                    flag = false
+                    break
+                }
+            }
+            return flag
+        })
+        console.log(onePrime)
+    </Script>
+</body>
+
+</html>
