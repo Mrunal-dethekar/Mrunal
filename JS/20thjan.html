@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let inputArray = [
+      {name: 'Amber', batch: 'Batch 12', likesIceCream: false},
+      {name: 'Pratik', batch: 'Batch 12', likesIceCream: true},
+      {name: 'Charan', batch: 'Batch 11', likesIceCream: false},
+      {name: 'Dhanashree', batch: 'Batch 12', likesIceCream: true},
+      {name: 'Anirban', batch: 'Batch 10', likesIceCream: false}
+    ]
+
+    let newArray=[]
+inputArray.forEach((e)=>{
+if(e.likesIceCream==true){
+newArray.push(e.name)
+}
+})
+console.log(newArray)
+    </script>
+</body>
+</html>
