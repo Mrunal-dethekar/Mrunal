@@ -184,6 +184,26 @@
   <div class='total'></div>
 <script>
   //your code here
+  const timenode =Array.from(document.querySelectorAll('[data-time]'))
+
+  const timeArray = timenode.map(node=>{
+    let temptime = node.dataset.time
+    let arr = temptime.split(':')
+    let min = parseInt(arr[0])
+    let sec = parseInt(arr[1])
+    return (min*60)+sec
+  })
+
+  const totalsec = timeArray.reduce((total,sec)=>total+sec)
+
+  const hh = Math.floor(totalsec/3600);
+  console.log(timeArray)
+  let secleft = totalsec%3600
+  const mm = Math.floor(secleft/60)
+  secleft=secleft%60
+  console.log(secleft)
+  document.querySelector('.total').innerHTML = `${hh}:${mm}:${secleft}`
+  
 </script>
 </body>
 </html>
