@@ -69,6 +69,27 @@
     }
 </style>
 
-<script src="scripts.js"></script>
+<script>
+
+  function setTime(){
+
+  const sechand = document.querySelector('.second-hand')
+  const minhand = document.querySelector('.min-hand')
+  const hourhand = document.querySelector('.hour-hand')
+
+  let newdate = new Date()
+
+  let sec = newdate.getSeconds()
+  let min = newdate.getMinutes()
+  let hour = newdate.getHours()
+
+  sechand.style.transform = `rotate(${sec*6+90}deg)`    // 60sec = 360 , sec = 360/60 , sec = 6 
+  minhand.style.transform = `rotate(${min*6+90}deg)`    // if we want it smooth the we should add sec/10 for every 10 sec it will move 1  degree
+  hourhand.style.transform = `rotate(${hour*30+90}deg)`
+  }
+
+  setInterval(setTime,1000)
+
+</script>
 </body>
 </html>
