@@ -11,22 +11,67 @@
 <body>
 
     <script>
-        let inputArray = [
-            { name: 'Amber', batch: 'Batch 12', likesIceCream: false },
-            { name: 'Pratik', batch: 'Batch 12', likesIceCream: true },
-            { name: 'Charan', batch: 'Batch 11', likesIceCream: false },
-            { name: 'Dhanashree', batch: 'Batch 11', likesIceCream: true },
-            { name: 'Anirban', batch: 'Batch 10', likesIceCream: false }
-        ]
+        // let inputArray = [
+        //     { name: 'Amber', batch: 'Batch 12', likesIceCream: false },
+        //     { name: 'Pratik', batch: 'Batch 12', likesIceCream: true },
+        //     { name: 'Charan', batch: 'Batch 11', likesIceCream: false },
+        //     { name: 'Dhanashree', batch: 'Batch 11', likesIceCream: true },
+        //     { name: 'Anirban', batch: 'Batch 10', likesIceCream: false }
+        // ]
 
+        // let newArray = []
+        // inputArray.forEach((e) => {
+        //     if (e.likesIceCream == true && e.batch == "Batch 11") {
+        //         newArray.push(e.name)
+        //     }
+        // })
+        // console.log(newArray)
 
-        let newArray = []
-        inputArray.forEach((e) => {
-            if (e.likesIceCream == true && e.batch == "Batch 11") {
-                newArray.push(e.name)
-            }
-        })
-        console.log(newArray)
+        //Callback Hell
+
+        // const executeOrder = function (callback) {
+        //     console.log('Order placed')
+        //     setTimeout(function () {
+        //         console.log('Order received')
+        //         console.log('Chef started preparing')
+        //         setTimeout(function () {
+        //             console.log('Pizza sauce added')
+        //             setTimeout(function () {
+        //                 console.log('First layer of cheeze added')
+        //                 setTimeout(function () {
+        //                     console.log('Topping Added')
+        //                     setTimeout(function () {
+        //                         console.log('Final layer of cheeze added')
+        //                         setTimeout(function () {
+        //                             console.log('pizza baked')
+        //                             setTimeout(function () {
+        //                                 console.log('oregano added and packed')
+        //                                 callback()
+        //                             }, 4000)
+        //                         }, 8000)
+        //                     }, 2000)
+        //                 }, 4000)
+        //             }, 3000)
+        //         }, 5000)
+        //     }, 2000)
+        // }
+
+        // executeOrder(function () {
+        //     console.log('The order is ready and handed over to zomato guy!')
+        // })
+
+        let bankbalence = [30000, 1000, 50000, 20000, 40000]
+
+let newbankbalence = bankbalence.map((e)=>{
+  if(e[0]%2==0){
+    return e + (e*0.2)
+  }
+  else{
+    return e + (e*0.35)
+  }
+})
+
+console.log(newbankbalence)
 
     </script>
 </body>
