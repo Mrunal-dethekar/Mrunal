@@ -50,7 +50,7 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 let finalBandnames=[]
 let newBandArray = bands.map((e)=>{
-  let x= e.replace(/A |An |The /gi, "")
+  let x= e.replace(/A |An |The /gi, "")   // (^(a |an |the )/i,"") for 1st occurance only
   return x
 })
 let newBandArray2 = [...newBandArray]
