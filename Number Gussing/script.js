@@ -1,12 +1,12 @@
 const userInput = document.getElementById("guessField")
 const submit = document.getElementById("subt")
-const previousGuesses = document.getElementsByClassName("guesses")
-const remainingGuess = document.getElementsByClassName("guessRemaining")
-const output = document.getElementsByClassName("lowOrHigh")
+const previousGuesses = document.getElementById("guesses")
+const remainingGuess = document.getElementById("guessRemaining")
+const output = document.getElementById("lowOrHigh")
 const startOver = document.querySelector(".resultParse")
 
-const pEl = document.createElement("p")
-pEl.classList.add("button")
+const pEl = document.createElement("p")                      
+pEl.classList.add("button")                                  
 
 let randomNo= parseInt(Math.random()*100+1)
 
@@ -14,34 +14,29 @@ let previousGuessArray =[]
 const maxGuesses = 10
 let numGuess=0
 
-let playGame = true
-
-if(playGame){
-  submit.addEventListener("click", (e)=>{
+submit.addEventListener("click", (e)=>{
     e.preventDefault();
 
     let guess = parseInt(userInput.value)
     validateGuess(guess)
   })
-}
+
 function validateGuess(guess){
   previousGuessArray.push(guess)
 
   if(previousGuessArray.length===maxGuesses){
-    console.log("123")
     //Game Over
     displayGuess(guess)
-    displayMsg(`Game Over! Nuber Was ${randomNo}`)
+    displayMsg(`Game Over! Number Was ${randomNo}`)
     endGame()    
   }else{
-    console.log("456")
-    displayGuess(guess)
-    checkGuess(guess)
+    displayGuess(guess);
+    checkGuess(guess);
   }
 }
 function displayGuess(guess){
-  console.log(guess)
-  previousGuesses.innerHTML += `${guess}`
+  
+  previousGuesses.innerHTML += ` ${guess} `
   userInput.value=''
   numGuess++
 
@@ -55,24 +50,22 @@ function displayGuess(guess){
 
 function checkGuess(guess){
   if(guess==randomNo){
-    displayGuess("You Guessed Correctly")
+    displayMsg("You Guessed Correctly")
     endGame()
   }else if(guess>randomNo){
-    displayGuess("Too high! Try Lower Number")
+    displayMsg("Too high! Try Lower Number")
   }else{
-    displayGuess("Too Low! Try Higher Number")
+    displayMsg("Too Low! Try Higher Number")
   }
 }
 
 function displayMsg(message){
-  output.innerHTML=`<h>${message}</h1>`
+  output.innerHTML=`${message}`
 }
 
 function endGame(){
-  pEl.addEventListener("click", location.reload())
-  playGame=false
   userInput.disabled=true
   submit.disabled=true
-  pEl.innerHTML=`Start New Game`
+  pEl.innerHTML = `<span onclick="location.reload()">Start New Game</span>`;
   startOver.append(pEl)
 }
