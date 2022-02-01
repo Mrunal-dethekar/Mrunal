@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      margin: 100px;
+      width: 350px;
+      height: 80px;
+      font-size: x-large;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" id="input1">
+
+  </form>
+
+  <script>
+    const inputEl = document.getElementById("input1")
+
+    inputEl.addEventListener("blur", checkEmail)
+
+    function checkEmail() {
+      const inputValue = inputEl.value
+      let indexOfAtTheRate = inputValue.indexOf("@")
+
+      if (inputValue.includes(" "))
+        window.alert("Email Should Not Contain Any Space")
+
+      if (indexOfAtTheRate == -1)
+        window.alert("@ is missing")
+
+      if (indexOfAtTheRate == 0)
+        window.alert("plase enter part before @")
+
+      if (indexOfAtTheRate == inputValue.length - 1)
+        window.alert("plase enter part following @")
+
+    }
+
+  </script>
+</body>
+
+</html>

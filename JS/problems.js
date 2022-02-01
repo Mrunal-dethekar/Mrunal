@@ -106,7 +106,7 @@ let students = [
 
 let arr = []
 students.forEach((student)=>{
-  if(Object.values(student.marks).every((subject)=> Number(subject)>30))
+  if(Object.values(student.marks).every((subject)=> subject>30))
   arr.push(student.name)
 })
 console.log(arr)
