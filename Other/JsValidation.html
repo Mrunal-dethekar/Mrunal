@@ -7,23 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    input {
-      margin: 100px;
-      width: 350px;
-      height: 80px;
-      font-size: x-large;
-    }
+
   </style>
 </head>
 
 <body>
   <form>
-    <input type="text" id="input1">
+    <input type="text" id="input1"><br>
+    <span id="div1"></span>
   </form>
 
   <script>
     const inputEl = document.getElementById("input1")
-
+    const div1 =document.getElementById("div1")
     inputEl.addEventListener("blur", checkEmail)
 
     function checkEmail() {
@@ -31,7 +27,7 @@
       let indexOfAtTheRate = inputValue.indexOf("@")
 
       if (inputValue.includes(" "))
-        window.alert("Email Should Not Contain Any Space")
+        div1.innerHTML="Email Should Not Contain Any Space"
 
       if (indexOfAtTheRate == -1)
         window.alert("@ is missing")
@@ -42,6 +38,9 @@
       if (indexOfAtTheRate == inputValue.length - 1)
         window.alert("plase enter part following @")
 
+        let charcode = inputValue.charCodeAt(0)
+      if(!(96<charcode || 123))
+       window.alert("Email Not Valid, Dont Use Capital Letter or Special Charecter")
     }
 
   </script>
