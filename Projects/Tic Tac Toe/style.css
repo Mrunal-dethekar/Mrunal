@@ -1,5 +1,8 @@
 *{
-
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica",sans-serif;
+  box-sizing: border-box;
 }
 
 .container{
@@ -45,7 +48,7 @@ border: 2px solid #e15e32;
 }
 
 button:hover{
-
+  background-color: #ece9e9;
 }
 
 .game{
