@@ -51,3 +51,12 @@ body{
 .quote-input:hover{
   border-color: black;
 }
+
+.correct{
+  color: green;
+}
+
+.incorrect{
+  color: red;
+  text-decoration: underline;
+}
