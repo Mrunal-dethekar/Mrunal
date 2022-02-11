@@ -25,7 +25,7 @@ margin: 2rem 0 4rem;
   /* flex: 1; */
   height: 100%;
   /* overflow-x: scroll; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .list{
@@ -50,6 +50,7 @@ margin: 2rem 0 4rem;
   padding: 15px 20px;
   margin: 4px 0;
   text-align: center;
+  overflow: hidden;
 }
 
 .instruction{
@@ -80,7 +81,7 @@ margin: 2rem 0 4rem;
   border: none;
   background-color: #f16334;
   height: 40px;
-  width: 200px;
+  width: 80%;
   margin: auto;
   margin-top: 10px;
   border-radius: 20px;
