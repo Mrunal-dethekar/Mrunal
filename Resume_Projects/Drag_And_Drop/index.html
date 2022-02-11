@@ -14,17 +14,35 @@
     <h1>Drag And Drop</h1>
   </header>
   <div class="container">
-    <div class="list">
-      <div class="list-item" draggable="true">list Item 1</div>
-      <div class="list-item" draggable="true">list Item 2</div>
-      <div class="list-item" draggable="true">list Item 3</div>
+    <div class="instruction">
+      <form class="form">
+        <label for="addTask" class="label">Add Task</label>
+        <input type="text" class="add-task" id="addTask" autocomplete="off">
+        <input type="submit" value="Add" class="submit-button" id="submitbtn">
+        <small>Right Click On Task To Delete Task</small>
+      </form>
+    </div>
+    <div class="list" id="addTaskList">
+      <div class="heading">
+        <h1>Task Queue</h1>
+      </div>
+      <div class="list-item" draggable="true">Task 1</div>
+      <div class="list-item" draggable="true">Task 2</div>
+      <div class="list-item" draggable="true">Task 3</div>
     </div>
     <div class="list">
+      <div class="heading">
+        <h1>Working</h1>
+      </div>
+
     </div>
     <div class="list">
+      <div class="heading">
+        <h1>Completed</h1>
+      </div>
+
     </div>
   </div>
-
 
 
   <script src="script.js"></script>
