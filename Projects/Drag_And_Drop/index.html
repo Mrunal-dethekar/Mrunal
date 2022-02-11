@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag And Drop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Drag And Drop</h1>
+  </header>
+  <div class="container">
+    <div class="instruction">
+      <form class="form">
+        <label for="addTask" class="label">Add Task</label>
+        <input type="text" class="add-task" id="addTask">
+        <input type="submit" value="Add" class="submit-button" id="submitbtn">
+        <small>Right Click On Task To Delete Task</small>
+      </form>
+    </div>
+    <div class="list" id="addTaskList">
+      <div class="heading"><h1>Task Queue</h1></div>
+      <div class="list-item" draggable="true">Task 1</div>
+      <div class="list-item" draggable="true">Task 2</div>
+      <div class="list-item" draggable="true">Task 3</div>
+    </div>
+    <div class="list">
+      <div class="heading"><h1>Working</h1></div>
+
+    </div>
+    <div class="list">
+      <div class="heading"><h1>Completed</h1></div>
+
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
