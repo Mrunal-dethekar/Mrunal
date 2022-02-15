@@ -1,34 +1,39 @@
 body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   height: 100vh;
   width: 100vw;
 }
 
 .box{
-  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 200px;
   height: 200px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 2px solid black;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: block;
-  transition: all 2s ease;
+  border: 4px solid blue;
   border-radius: 50%;
   position: relative;
+  transition: all 2s ease;
+  overflow: hidden;
 }
 
-.box2{
+.box1, .box2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   position: absolute;
-  top: 50%;
-  left: 150%;
-  color: transparent;
+  width: 200px;
+  height: 200px;
+  background-color: lightcoral;
+  border-right: 2px solid black;
 }
 
 .box:hover{
+  position: static;
   border-radius: 0;
 }
