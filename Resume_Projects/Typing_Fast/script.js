@@ -56,7 +56,8 @@ function startTimer(){
   timeElement.innerText='0'
    startTime=new Date()
   setInterval(()=>{
-    timeElement.innerText=getTime()
+    var currTime=getTime()    //use it for calculating word for min
+    timeElement.innerText=currTime
   },1000)
 }
 
