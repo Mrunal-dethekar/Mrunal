@@ -23,6 +23,7 @@ class HelloClass extends Component {
   changeGreetTo = () => {
     this.setState({
       greetTo: "India",
+      greetAlsoTo: "USA",
     });
   };
 
@@ -32,8 +33,8 @@ class HelloClass extends Component {
       <>
         <h1>
           Hello class {greetTo} and {greetAlsoTo}
+        </h1> <br />
           <button onClick={this.changeGreetTo}>Change State</button>
-        </h1>
       </>
     );
   }
