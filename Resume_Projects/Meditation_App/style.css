@@ -1,0 +1,137 @@
+/* #31a9ff #fffff */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: radial-gradient(white 30%,lightblue);
+}
+
+.start{
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.btnstart{
+  width: 280px;
+  height: 50px;
+  border-radius: 25px;
+  position: relative;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-140px,-25px);
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.question{
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-container{
+    box-shadow: gray 0.5px 0.5px 10px 0.1px;
+    padding: 40px 70px;
+}
+
+.question1{
+  padding: 10px 0 40px 0;
+  margin: 10px 60px ;
+  text-align: center;
+  font-size:xx-large;
+  color: hsl(44, 71%, 27%);
+}
+
+.answer{
+  padding: 20px;
+}
+
+.answer button{
+  margin: 10px;
+  padding: 5px 10px;
+  font-size: larger;
+  border-radius: 15px;
+  cursor: pointer;
+  color: hsl(44, 72%, 20%);
+  box-shadow: gray 0.5px 0.5px 4px 0.1px;
+}
+
+.answer button:active{
+  transform: scale(1.1) ;
+}
+
+.breath{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #31a9ff;
+  transition: background-color 3s ease;
+}
+
+.breath-container{
+
+}
+
+.top{
+  text-align: center;
+  height: 50px;
+}
+
+.mid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 15px;
+  border-radius: 7.5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.line{
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+  background-color: #ffffff;
+  animation: expand 5s ease-in-out;
+}
+
+.bottom{
+  text-align: center;
+  height: 50px;
+}
+
+@keyframes expand{
+  from{
+    width: 15px;
+  }
+  to{
+    width: 300px;
+  }
+}
+
+@keyframes contract{
+  from{
+    width: 300px;
+  }
+  to{
+    width: 15px;
+  }
+}
+
+.circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #31a9ff;
+  transition: background-color 3s ease;
+}
