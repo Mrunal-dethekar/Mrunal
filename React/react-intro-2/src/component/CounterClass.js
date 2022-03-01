@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import imag from '../Image/passport.jpg'
 
 class CounterClass extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class CounterClass extends Component {
         <button onClick={this.incrementCounter}>Increment</button><br/><br/>
         <button onClick={this.decrementCounter}>Decrement</button><br/><br/>
         <button onClick={this.increment3Counter}>Increment 3</button>
+        <img src={imag} alt="passport" />
       </>
     );
   }
