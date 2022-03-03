@@ -159,7 +159,7 @@ body{
 .player svg {
   position: absolute;
   height: 70%;
-  top: 45%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
   pointer-events: none;
@@ -171,18 +171,24 @@ body{
   color: white;
   position: absolute;
   font-size: 50px;
-  bottom: 7%;
+  bottom: 5%;
 }
 
 .play{
   position: relative;
-  bottom: 5%;
+  bottom: 2%;
   padding-left: 1.5%;
   cursor: pointer;
 }
 
 .replay{
   position: absolute;
-  bottom: 27%;
+  bottom: 22%;
   cursor: pointer;
+}
+
+.instruction{
+  position: absolute;
+  top: 3%;
+  color: #ffffff;
 }
