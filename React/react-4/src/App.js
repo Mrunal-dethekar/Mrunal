@@ -14,7 +14,7 @@ function App() {
        {show && <TableComponent/>}
        <h1>{count}</h1>
        <ProgressBar now={count} />
-      <Button variant="dark" className="m-3" onClick={()=>setCount(count + 1)}>Increment</Button>
+      <Button variant="dark" className="m-3" onClick={()=>setCount(count + 2)}>Increment</Button>
       <Button variant="dark" className="m-3" onClick={()=>setCount(count - 1)}>Decrement</Button>
       </Container>
     </div>
