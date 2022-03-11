@@ -1,24 +1,19 @@
 import React from "react";
+import "../Components/navbar.css"
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function myNavbar() {
   return (
     <Navbar style={{ backgroundColor: "skyblue" }} variant="light" sticky="top">
       <Container>
-        <Navbar.Brand>Twitter</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/landingpage">Twitter</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link>
-            <Link to="/landingpage" style={{ textDecoration: "none", color: "inherit" }}>
-              Home
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link
+          <Nav.Link as={NavLink}
               to="/posts"
-              style={{ textDecoration: "none", color: "inherit" }}>
+              style={{ textDecoration: "none", color: "inherit" }}
+              className={({ isActive }) => (isActive ? "active" : "")}>
               Post
-            </Link>
           </Nav.Link>
         </Nav>
       </Container>

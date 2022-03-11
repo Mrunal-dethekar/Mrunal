@@ -1,39 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Spinner } from "react-bootstrap";
 import axios from "axios";
+import { useParams } from 'react-router-dom'
 
 function Post() {
-  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState({});
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => setPosts(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const { id } = useParams()
+
+  useEffect(() => {    
+    const fetchPost = async () => {
+      try{
+        const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        setPost(res.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchPost()
+  }, [id]);
 
   return (
     <>
-      {posts.map((post) => (
-        <Card
-          className="my-2"
-          bg="dark"
-          text="light"
-          border="primary"
-          key={post.id}
-        >
-          <Card.Header>User {post.userId}</Card.Header>
-          <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Text>{post.body}</Card.Text>
-            <Button variant="primary">Like</Button>
-            <Button variant="primary mx-3">Comment</Button>
-          </Card.Body>
-          <Card.Footer style={{ textAlign: "right" }}>
-            Uploaded {Math.floor(Math.random() * 60)} min ago
-          </Card.Footer>
-        </Card>
-      ))}
+      <h1>Post No. {post.id}</h1>
+      {Object.keys(post) ? (
+          <Card
+            className="post"
+            border="primary"
+            bg="dark"
+            text="light"
+            key={post.id}
+          >
+            <Card.Header>
+              <small className="text-muted">User {post.userId}</small>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>{post.title}</Card.Title>
+              <Card.Text>{post.body}</Card.Text>
+              <Button variant="primary" className="post-buttons">
+                Like
+              </Button>
+              <Button variant="primary" className="post-buttons">
+                Comment
+              </Button>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">
+                Uploaded {Math.floor(Math.random() * 60)} mins ago
+              </small>
+            </Card.Footer>
+          </Card>
+      ) : (
+        <Spinner animation="border" />
+      )}
     </>
   );
 }
