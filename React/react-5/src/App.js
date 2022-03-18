@@ -7,6 +7,7 @@ import MyNavbar from "./Components/Navbar.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import Page404 from "./Components/Page404";
+import Count from "./Components/Count";
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
           <MyNavbar className="mb-3" />
         </Container>
         <Routes>
-          <Route path="/landingpage" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="*" element={<Page404 />} />
+          <Route path="/count" element={<Count />} />
         </Routes>
     </BrowserRouter>
       </Container>
