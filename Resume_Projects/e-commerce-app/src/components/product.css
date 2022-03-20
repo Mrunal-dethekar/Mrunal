@@ -1,0 +1,13 @@
+.productIcons:hover{
+  background-color: #e9f5f5;
+  transform: scale(1.1);
+}
+
+h3{
+  /* display: 'flex',
+  justifyContent: 'space-between',
+  margin: '20px', */
+  fontSize: '20px',
+  fontWeight: '600',
+
+}
