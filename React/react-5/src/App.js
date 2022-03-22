@@ -8,10 +8,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
 import Page404 from "./Components/Page404";
 import Count from "./Components/Count";
+import { Provider } from "react-redux";
+import  store  from "./redux/store";
 
 
 function App() {
   return (
+    <Provider store={store}>
     <Container className="px-5">
         <BrowserRouter>
         <Container className="p-0 mb-5">
@@ -26,6 +29,7 @@ function App() {
         </Routes>
     </BrowserRouter>
       </Container>
+      </Provider>
   );
 }
 
