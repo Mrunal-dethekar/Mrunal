@@ -12,11 +12,11 @@ const counterReducer = (state = initialState, action) => {
         count: state.count + action.payload
       }
 
-      case DECREMENT_COUNTER:
-        return {
-          ...state,
-          count: state.count - action.payload
-        }
+    case DECREMENT_COUNTER:
+      return {
+        ...state,
+        count: state.count - action.payload
+      }
     
     default: return state
   }

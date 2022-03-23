@@ -1,20 +1,36 @@
 import React from "react";
-import "../Components/navbar.css"
-import { Navbar, Container, Nav } from "react-bootstrap";
+import {
+  Navbar as BootstrapNavbar,
+  Container,
+  Nav,
+} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-function myNavbar() {
+function Navbar() {
   return (
-    <Navbar style={{ backgroundColor: "skyblue" }} variant="light" sticky="top">
+    <BootstrapNavbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand as={NavLink} to="/">Twitter</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link as={NavLink}
+        <BootstrapNavbar.Brand href="#home">
+          Social Media Site
+        </BootstrapNavbar.Brand>
+        <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" />
+        <BootstrapNavbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link
+              as={NavLink}
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              as={NavLink}
               to="/posts"
-              className={({ isActive }) => (isActive ? "active" : "")}>
-              Post
-          </Nav.Link>
-          <Nav.Link
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Posts
+            </Nav.Link>
+            <Nav.Link
               as={NavLink}
               to="/about"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -28,15 +44,24 @@ function myNavbar() {
             >
               Contact Us
             </Nav.Link>
-          <Nav.Link as={NavLink}
+            <Nav.Link
+              as={NavLink}
               to="/count"
-              className={({ isActive }) => (isActive ? "active" : "")}>
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               Count
-          </Nav.Link>
-        </Nav>
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets">Sign Up</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">
+              Login
+            </Nav.Link>
+          </Nav>
+        </BootstrapNavbar.Collapse>
       </Container>
-    </Navbar>
+    </BootstrapNavbar>
   );
 }
 
-export default myNavbar;
+export default Navbar;

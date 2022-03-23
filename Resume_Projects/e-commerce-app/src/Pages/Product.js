@@ -1,12 +1,7 @@
-import Announcement from "../components/Announcement";
-import Navbar from "../components/Navbar";
-import Products from "../components/Products";
-import Footer from "../components/Footer";
 import Newsletter from "../components/Newsletter";
 import "./product.css";
 import { Add, Remove } from "@material-ui/icons";
 
-const container = {};
 
 const wrapper = {
   padding: "50px",
@@ -107,9 +102,7 @@ const button = {
 
 const Product = () => {
   return (
-    <div style={container}>
-      <Navbar />
-      <Announcement />
+    <>
       <div style={wrapper}>
         <div style={imgContainer}>
           <img style={image} src="https://i.ibb.co/S6qMxwr/jean.jpg" />
@@ -153,8 +146,7 @@ const Product = () => {
         </div>
       </div>
       <Newsletter />
-      <Footer />
-    </div>
+    </>
   );
 };
 

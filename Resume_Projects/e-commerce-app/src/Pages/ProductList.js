@@ -1,11 +1,7 @@
 import React from "react";
-import Announcement from "../components/Announcement";
-import Navbar from "../components/Navbar";
 import Products from "../components/Products";
-import Footer from "../components/Footer";
 import Newsletter from "../components/Newsletter";
 
-const container = {};
 
 const title = {
   margin: "20px",
@@ -31,13 +27,9 @@ const select = {
   marginRight: "20px",
 };
 
-const option = {};
-
 const ProductList = () => {
   return (
-    <div style={container}>
-      <Announcement />
-      <Navbar />
+    <>
       <h1 style={title}>Dresses</h1>
       <div style={filterContainer}>
         <div style={filter}>
@@ -71,8 +63,7 @@ const ProductList = () => {
       </div>
       <Products />
       <Newsletter />
-      <Footer />
-    </div>
+    </>
   );
 };
 

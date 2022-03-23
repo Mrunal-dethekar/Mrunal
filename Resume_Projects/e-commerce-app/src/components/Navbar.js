@@ -1,41 +1,48 @@
 import React from "react";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  
+  const LinkColor ={
+    color: 'black',
+    textDecoration: 'none',
+  }
+
   const container = {
     height: "60px",
-  }
+  };
 
   const wrapper = {
     padding: "10px 20px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  };
 
   const left = {
     flex: "1",
     display: "flex",
     alignItems: "center",
-  }
+  };
 
   const center = {
     flex: "1",
     textAlign: "center",
-  }
+  };
 
   const right = {
     flex: "1",
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-  }
+  };
 
   const language = {
     fontSize: "14px",
     cursor: "pointer",
-  }
+  };
 
   const searchContainer = {
     border: "0.5px solid lightgray",
@@ -43,17 +50,17 @@ const Navbar = () => {
     alignItems: "center",
     marginLeft: "25px",
     padding: "5px",
-  }
+  };
 
   const logo = {
     fontWeight: "bold",
-  }
+  };
 
   const menuItem = {
     fontStyle: "14px",
     cursor: "pointer",
     marginLeft: "25px",
-  }
+  };
 
   return (
     <div style={container}>
@@ -65,16 +72,18 @@ const Navbar = () => {
             <Search style={{ color: "gray", fontSize: "16px" }} />
           </div>
         </div>
-        <div style={center}>
-          <h1 style={logo}>E-Commerce</h1>
+        <div style={center}><Link to="/" style={LinkColor}>
+          <h1 style={logo}>E-Commerce</h1></Link>
         </div>
         <div style={right}>
           <div style={menuItem}>REGISTER</div>
           <div style={menuItem}>SIGN IN</div>
           <div style={menuItem}>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
+            <Link to="/cart" style={LinkColor}>
+              <Badge badgeContent={4} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </Link>
           </div>
         </div>
       </div>

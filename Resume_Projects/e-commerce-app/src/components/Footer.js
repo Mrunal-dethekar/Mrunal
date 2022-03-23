@@ -7,9 +7,15 @@ import {
   Room,
   Twitter,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
+
+  const LinkColor ={
+    color: 'black',
+    textDecoration : "none",
+  }
 
   const container = {
     display: 'flex',
@@ -111,7 +117,7 @@ const Footer = () => {
         <h3 style={title}>Useful Links</h3>
         <ul style={list}>
           <li style={listItem}>Home</li>
-          <li style={listItem}>Cart</li>
+          <li style={listItem}><Link style={LinkColor} to="/cart">Cart</Link></li>
           <li style={listItem}>Man Fashion</li>
           <li style={listItem}>Woman Fashion</li>
           <li style={listItem}>Accessories</li>
