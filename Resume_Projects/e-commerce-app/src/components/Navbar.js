@@ -2,65 +2,69 @@ import React from "react";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const LinkColor ={
+  color: 'black',
+  textDecoration: 'none',
+}
+
+const container = {
+  height: "60px",
+};
+
+const wrapper = {
+  padding: "10px 20px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+};
+
+const left = {
+  flex: "1",
+  display: "flex",
+  alignItems: "center",
+};
+
+const center = {
+  flex: "1",
+  textAlign: "center",
+};
+
+const right = {
+  flex: "1",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+};
+
+const language = {
+  fontSize: "14px",
+  cursor: "pointer",
+};
+
+const searchContainer = {
+  border: "0.5px solid lightgray",
+  display: "flex",
+  alignItems: "center",
+  marginLeft: "25px",
+  padding: "5px",
+};
+
+const logo = {
+  fontWeight: "bold",
+};
+
+const menuItem = {
+  fontStyle: "14px",
+  cursor: "pointer",
+  marginLeft: "25px",
+};
 
 const Navbar = () => {
+
+  const state = useSelector((state)=> state.handleCart)
   
-  const LinkColor ={
-    color: 'black',
-    textDecoration: 'none',
-  }
-
-  const container = {
-    height: "60px",
-  };
-
-  const wrapper = {
-    padding: "10px 20px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  };
-
-  const left = {
-    flex: "1",
-    display: "flex",
-    alignItems: "center",
-  };
-
-  const center = {
-    flex: "1",
-    textAlign: "center",
-  };
-
-  const right = {
-    flex: "1",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-  };
-
-  const language = {
-    fontSize: "14px",
-    cursor: "pointer",
-  };
-
-  const searchContainer = {
-    border: "0.5px solid lightgray",
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "25px",
-    padding: "5px",
-  };
-
-  const logo = {
-    fontWeight: "bold",
-  };
-
-  const menuItem = {
-    fontStyle: "14px",
-    cursor: "pointer",
-    marginLeft: "25px",
-  };
 
   return (
     <div style={container}>
@@ -80,7 +84,7 @@ const Navbar = () => {
           <div style={menuItem}>SIGN IN</div>
           <div style={menuItem}>
             <Link to="/cart" style={LinkColor}>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={state.length} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
             </Link>

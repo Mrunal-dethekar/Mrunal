@@ -1,51 +1,17 @@
 import Newsletter from "../components/Newsletter";
 import "./product.css";
-import { Add, Remove } from "@material-ui/icons";
-
-
-const wrapper = {
-  padding: "50px",
-  display: "flex",
-};
-
-const imgContainer = {
-  flex: "1",
-};
-
-const image = {
-  width: "100%",
-  height: "90vh",
-  objectFit: "cover",
-};
-
-const infoContainer = {
-  flex: "1",
-  padding: "0px 50px",
-};
-
-const title = {
-  fontWeight: "200",
-};
-
-const desc = {
-  margin: "20px 0px",
-};
+import { Add, Remove, StarHalfOutlined } from "@material-ui/icons";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Badge, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { addToCart } from "../redux";
+import { useDispatch } from "react-redux";
 
 const price = {
-  fontWeight: "100",
+  fontWeight: "600",
   fontSize: "40px",
-};
-
-const filterContainer = {
-  width: "50%",
-  margin: "30px 0px",
-  display: "flex",
-  justifyContent: "space-between",
-};
-
-const filter = {
-  display: "flex",
-  alignItems: "center",
+  color: "teal",
 };
 
 const filterTitle = {
@@ -68,19 +34,6 @@ const filterSize = {
 
 const filterSizeOption = {};
 
-const addContainer = {
-  width: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-};
-
-const amountContainer = {
-  display: "flex",
-  alignItems: "center",
-  fontWeight: "700",
-};
-
 const amount = {
   width: "30px",
   height: "30px",
@@ -92,39 +45,84 @@ const amount = {
   margin: "0px 5px",
 };
 
-const button = {
-  padding: "15px",
-  border: "2px solid teal",
-  backgroundColor: "white",
-  cursor: "pointer",
-  fontWeight: "500",
-};
-
 const Product = () => {
-  return (
-    <>
-      <div style={wrapper}>
-        <div style={imgContainer}>
-          <img style={image} src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+  const { id } = useParams();
+
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const addProduct = (product) => {
+    for(let i=0; i<value; i++){
+      dispatch(addToCart(product));
+    }
+  };
+
+  const handleItem = (sign) => {
+    if (sign === "+") {
+      setValue(value + 1);
+    } else {
+      setValue(value - 1);
+    }
+  };
+
+  useEffect(() => {
+    const getProduct = async () => {
+      setLoading(true);
+      const res = await fetch(`http://fakestoreapi.com/products/${id}`);
+      setProduct(await res.json());
+      setLoading(false);
+    };
+    getProduct();
+  }, []);
+
+  const Loading = () => {
+    return (
+      <div className="d-flex justify-content-center">
+        <Spinner
+          animation="border"
+          role="status"
+          style={{ width: "150px", height: "150px" }}
+        ></Spinner>
+      </div>
+    );
+  };
+
+  const ShowProduct = () => {
+    return (
+      <>
+        <div className="col-md-6">
+          <img
+            src={product.image}
+            alt={product.title}
+            height="100%"
+            width="90%"
+          />
         </div>
-        <div style={infoContainer}>
-          <h1 style={title}>Denim Jumpsuit</h1>
-          <p style={desc}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+        <div className="col-md-6 px-5">
+          <h6 className="text-uppercase text-black-50">{product.category}</h6>
+          <h2>{product.title}</h2>
+          <p className="lead">
+            Rating{" "}
+            <Badge bg="success">
+              {product.rating && product.rating.rate}{" "}
+              <StarHalfOutlined style={{ fontSize: "17px" }} />
+            </Badge>
           </p>
-          <span style={price}>$ 20</span>
-          <div style={filterContainer}>
-            <div style={filter}>
+          <p className="my-3">{product.description}</p>
+          <span style={price}>${product.price}</span>
+          <div className="d-flex m-3">
+            <div className="col-mg-6 d-flex align-items-center">
               <div style={filterTitle}>Color</div>
-              <div style={{...filterColor, backgroundColor:'black'}}></div>
-              <div style={{...filterColor, backgroundColor:'darkblue'}}></div>
-              <div style={{...filterColor, backgroundColor:'gray'}}></div>
+              <div style={{ ...filterColor, backgroundColor: "black" }}></div>
+              <div
+                style={{ ...filterColor, backgroundColor: "darkblue" }}
+              ></div>
+              <div style={{ ...filterColor, backgroundColor: "gray" }}></div>
             </div>
-            <div style={filter}>
+            <div className="col-mg-6 d-flex align-items-center mx-5">
               <span style={filterTitle}>Size</span>
               <select style={filterSize}>
                 <option style={filterSizeOption}>XS</option>
@@ -135,14 +133,41 @@ const Product = () => {
               </select>
             </div>
           </div>
-          <div style={addContainer}>
-            <div style={amountContainer}>
-              <Remove/>
-              <option style={amount}>1</option>
-              <Add/>
+          <div className="row d-flex">
+            <div className="d-flex align-item-center p-3 my-3">
+              <Add
+                onClick={() => handleItem("+")}
+                style={{ cursor: "pointer" }}
+              />
+              <option style={amount}>{value}</option>
+              <Remove
+                onClick={() => handleItem("-")}
+                style={{ cursor: "pointer" }}
+              />
             </div>
-            <button style={button}>Add To Cart</button>
           </div>
+          <div className="col-mg-6">
+            <button
+              className="btn btn-outline-dark px-4 py-2 mx-3"
+              to="/cart"
+              onClick={() => addProduct(product)}
+            >
+              Add To Cart
+            </button>
+            <Link className="btn btn-dark px-3 py-2 mx-3" to="/cart">
+              Go To Cart
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="container py-5">
+        <div className="row py-4">
+          {loading ? <Loading /> : <ShowProduct />}
         </div>
       </div>
       <Newsletter />

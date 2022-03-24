@@ -1,4 +1,7 @@
 import { Add, Remove } from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, DeleteItem } from "../redux/";
 
 const wrapper = {
   padding: "20px",
@@ -70,8 +73,6 @@ const productColor = {
   borderRadius: "50%",
 };
 
-const productSize = {};
-
 const priceDetail = {
   flex: "1",
   display: "flex",
@@ -88,7 +89,14 @@ const productAmountContainer = {
 
 const productAmount = {
   fontSize: "24px",
-  margin: "5px",
+  width: "30px",
+  height: "30px",
+  borderRadius: "10px",
+  border: "1px solid teal",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "0px 15px",
 };
 
 const productPrice = {
@@ -133,95 +141,98 @@ const button = {
 };
 
 const Cart = () => {
+  const state = useSelector((state) => state.handleCart);
+
+  const [total,setTotal]=useState(0);
+
+  const dispatch = useDispatch();
+
+  const handleItem = (item, sign) => {
+    if (sign === "+") {
+      dispatch(addToCart(item));
+    } else {
+      dispatch(DeleteItem(item));
+    }
+  };
+
+  useEffect(()=>{
+    setTotal(state.reduce((total,e)=>(
+      total+(e.price*e.quantity)
+    ),0))
+  })
+
+  const CartItems = () => {
+    return (
+      <>
+        {state.map((item) => (
+          <>
+            <div style={product}>
+              <div style={productDetail}>
+                <img style={image} src={item.image} />
+                <div style={details}>
+                  <span style={productName}>
+                    <b>Product:</b> <span style={{fontSize:"1.2rem",fontWeight:"450"}}>{item.title}</span>
+                  </span>
+                  <span style={productId}>
+                    <b>ID:</b> {item.id}
+                  </span>
+                  <div style={{ ...productColor, backgroundColor: "black" }} />
+                </div>
+              </div>
+              <div style={priceDetail}>
+                <div style={productAmountContainer}>
+                  <Add
+                    onClick={() => handleItem(item, "+")}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <div style={productAmount}>{item.quantity}</div>
+                  <Remove
+                    onClick={() => handleItem(item, "-")}
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
+                <div style={productPrice}>${item.price*item.quantity}</div>
+              </div>
+            </div>
+            <hr style={hr} />
+          </>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
       <div style={wrapper}>
         <h1 style={title}>YOUR BAG</h1>
         <div style={top}>
-          <button
-            style={topButton}
-          >
-            CONTINUE SHOPPING
-          </button>
+          <button style={topButton}>CONTINUE SHOPPING</button>
           <div style={topTexts}>
-            <span style={topText}>Shopping Bag(2)</span>
+            <span style={topText}>Shopping Bag({state.length})</span>
             <span style={topText}>Your Wishlist (0)</span>
           </div>
           <button
             style={{
               ...topButton,
               border: "none",
-              backgroundColor: `${'filled' === "filled" ? "black" : "transparent"}`,
-              color: `${'filled' === "filled" && "white"}`,
-            }}          >
+              backgroundColor: `${
+                "filled" === "filled" ? "black" : "transparent"
+              }`,
+              color: `${"filled" === "filled" && "white"}`,
+            }}
+          >
             CHECKOUT NOW
           </button>
         </div>
         <div style={bottom}>
           <div style={info}>
-            <div style={product}>
-              <div style={productDetail}>
-                <img
-                  style={image}
-                  src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A"
-                />
-                <div style={details}>
-                  <span style={productName}>
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </span>
-                  <span style={productId}>
-                    <b>ID:</b> 93813718293
-                  </span>
-                  <div style={{...productColor, backgroundColor: "black",}}/>
-                  <span style={productSize}>
-                    <b>Size:</b> 37.5
-                  </span>
-                </div>
-              </div>
-              <div style={priceDetail}>
-                <div style={productAmountContainer}>
-                  <Add />
-                  <div style={productAmount}>2</div>
-                  <Remove />
-                </div>
-                <div style={productPrice}>$ 30</div>
-              </div>
-            </div>
-            <hr style={hr} />
-            <div style={product}>
-              <div style={productDetail}>
-                <img
-                  style={image}
-                  src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png"
-                />
-                <div style={details}>
-                  <span style={productName}>
-                    <b>Product:</b> HAKURA T-SHIRT
-                  </span>
-                  <span style={productId}>
-                    <b>ID:</b> 93813718293
-                  </span>
-                  <div style={{...productColor,backgroundColor: "gray",}} />
-                  <span style={productSize}>
-                    <b>Size:</b> M
-                  </span>
-                </div>
-              </div>
-              <div style={priceDetail}>
-                <div style={productAmountContainer}>
-                  <Add />
-                  <div style={productAmount}>1</div>
-                  <Remove />
-                </div>
-                <div style={productPrice}>$ 20</div>
-              </div>
-            </div>
+            <CartItems />
           </div>
           <div style={summary}>
             <h1 style={summaryTitle}>ORDER SUMMARY</h1>
             <div style={summaryItem}>
               <span style={summaryItemText}>Subtotal</span>
-              <span style={summaryItemPrice}>$ 80</span>
+              <span style={summaryItemPrice}>$ {total.toFixed(2)}</span>
             </div>
             <div style={summaryItem}>
               <span style={summaryItemText}>Estimated Shipping</span>
@@ -231,9 +242,11 @@ const Cart = () => {
               <span style={summaryItemText}>Shipping Discount</span>
               <span style={summaryItemPrice}>$ -5.90</span>
             </div>
-            <div style={{...summaryItem, fontWeight:"500", fontSize:"24px"}}>
+            <div
+              style={{ ...summaryItem, fontWeight: "500", fontSize: "24px" }}
+            >
               <span style={summaryItemText}>Total</span>
-              <span style={summaryItemPrice}>$ 80</span>
+              <span style={summaryItemPrice}>$ {total.toFixed(2)}</span>
             </div>
             <button style={button}>CHECKOUT NOW</button>
           </div>

@@ -5,8 +5,49 @@ import {
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 import "./product.css";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart/action";
 
-const Product = ({ item }) => {
+const container = {
+  flex: "1",
+  margin: "5px",
+  minWidth: "280px",
+  height: "350px",
+  paddingTop: "10px",
+  display: "flex",
+  // alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#f5fbfd",
+  position: "relative",
+};
+
+const img = {
+  height: "70%",
+  zIndex: "2",
+  maxWidth: "80%",
+};
+
+const heading6 = {
+  textAlign: "center",
+  position: "absolute",
+};
+
+const icon = {
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  backgroundColor: "white",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "10px",
+  transition: "all 0.5s ease",
+};
+
+
+const Product = ({ product }) => {
+
   const [showHide, setShowHide] = useState(0);
 
   const handleHover = (e) => {
@@ -17,30 +58,12 @@ const Product = ({ item }) => {
     }
   };
 
-  const container = {
-    flex: "1",
-    margin: "5px",
-    minWidth: "280px",
-    height: "350px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f5fbfd",
-    position: "relative",
-  };
+  const dispatch = useDispatch()
 
-  const circle = {
-    width: "200px",
-    height: "200px",
-    borderRadius: "50%",
-    backgroundColor: "white",
-    position: "absolute",
-  };
+  const addProduct = (product)=>{
+    dispatch(addToCart(product))
+  }
 
-  const img = {
-    height: "70%",
-    zIndex: "2",
-  };
 
   const info = {
     opacity: `${showHide}`,
@@ -58,32 +81,28 @@ const Product = ({ item }) => {
     cursor: "pointer",
   };
 
-  const icon = {
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    backgroundColor: "white",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "10px",
-    transition: "all 0.5s ease",
-  };
-
   return (
     <div
       style={container}
       onMouseEnter={() => handleHover("show")}
       onMouseLeave={() => handleHover("hide")}
     >
-      <div style={circle}></div>
-      <img src={item.img} style={img} />
+      <img src={product.image} style={img} alt={product.title} />
+      <h6 style={{ ...heading6, bottom: "10%" }}>
+        {product.title.substring(0, 18)}...
+      </h6>
+      <h6 style={{ ...heading6, bottom: "1%", color: "teal" }}>
+        ${product.price}
+      </h6>
+
       <div style={info}>
-        <div style={icon} className="productIcons">
+        <div style={icon} className="productIcons" onClick={()=>addProduct(product)}>
           <ShoppingCartOutlined />
         </div>
         <div style={icon} className="productIcons">
-          <SearchOutlined />
+          <Link to={`/products/${product.id}`} style={{ color: "black" }}>
+            <SearchOutlined />
+          </Link>
         </div>
         <div style={icon} className="productIcons">
           <FavoriteBorderOutlined />

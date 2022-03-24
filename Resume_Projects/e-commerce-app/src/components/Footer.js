@@ -116,7 +116,7 @@ const Footer = () => {
       <div style={center}>
         <h3 style={title}>Useful Links</h3>
         <ul style={list}>
-          <li style={listItem}>Home</li>
+          <li style={listItem}><Link style={LinkColor} to="/">Home</Link></li>
           <li style={listItem}><Link style={LinkColor} to="/cart">Cart</Link></li>
           <li style={listItem}>Man Fashion</li>
           <li style={listItem}>Woman Fashion</li>
