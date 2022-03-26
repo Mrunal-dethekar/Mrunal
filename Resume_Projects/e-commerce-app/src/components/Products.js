@@ -11,7 +11,7 @@ const Products = () => {
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      const res = await fetch("http://fakestoreapi.com/products");
+      const res = await fetch("https://fakestoreapi.com/products");
       if (componentMount) {
         setData(await res.clone().json());
         setFilter(await res.json());

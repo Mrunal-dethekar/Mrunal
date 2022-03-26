@@ -12,6 +12,13 @@ const Slider = (props) => {
     }
   };
 
+  const automaticSlider =setTimeout(()=>{
+      setTimeout(()=>{
+        handleClick("right")
+        automaticSlider()
+      })
+  },3000)
+
   const container = {
     width: "100%",
     height: "100vh",

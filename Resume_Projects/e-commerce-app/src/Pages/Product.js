@@ -71,7 +71,7 @@ const Product = () => {
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
-      const res = await fetch(`http://fakestoreapi.com/products/${id}`);
+      const res = await fetch(`https://fakestoreapi.com/products/${id}`);
       setProduct(await res.json());
       setLoading(false);
     };
