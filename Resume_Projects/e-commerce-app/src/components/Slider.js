@@ -2,6 +2,65 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import { sliderItems } from "../data";
 
+const container = {
+  width: "100%",
+  height: "100vh",
+  display: "flex",
+  position: "relative",
+  overflow: "hidden",
+};
+
+const arrows = {
+  width: "50px",
+  height: "50px",
+  backgroundColor: "#fff7f7",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "absolute",
+  top: "0",
+  bottom: "0",
+  margin: "auto",
+  cursor: "pointer",
+  opacity: "0.5",
+  zIndex: "2",
+};
+
+const imgContainer = {
+  flex: "1",
+  height: "100%",
+};
+
+const infoContainer = {
+  flex: "1",
+  padding: "50px",
+};
+
+const img = {
+  height: "80%",
+  objectFit: "cover",
+};
+
+const title = {
+  fontSize: "70px",
+};
+
+const desc = {
+  margin: "50px 0px",
+  fontSize: "20px",
+  fontWeight: "500",
+  letterSpacing: "3px",
+};
+
+const button = {
+  padding: "10px",
+  fontSize: "20px",
+  backgroundColor: "transparent",
+  cursor: "pointer",
+};
+
+
 const Slider = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
@@ -12,93 +71,17 @@ const Slider = (props) => {
     }
   };
 
-  const automaticSlider =setTimeout(()=>{
-      setTimeout(()=>{
-        handleClick("right")
-        automaticSlider()
-      })
-  },3000)
+  const automaticSlider = setTimeout(() => {
+    setTimeout(() => {
+      handleClick("right");
+      automaticSlider();
+    });
+  }, 3000);
 
-  const container = {
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    position: "relative",
-    overflow: "hidden",
-  };
-
-  const arrowLeft = {
-    width: "50px",
-    height: "50px",
-    backgroundColor: "#fff7f7",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: "0",
-    bottom: "0",
-    margin: "auto",
-    left: "10px",
-    cursor: "pointer",
-    opacity: "0.5",
-    zIndex: "2",
-  };
-
-  const arrowRight = {
-    width: "50px",
-    height: "50px",
-    backgroundColor: "#fff7f7",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: "0",
-    bottom: "0",
-    margin: "auto",
-    right: "10px",
-    cursor: "pointer",
-    opacity: "0.5",
-    zIndex: "2",
-  };
-
-  const imgContainer = {
-    flex: "1",
-    height: "100%",
-  };
-
-  const infoContainer = {
-    flex: "1",
-    padding: "50px",
-  };
-
-  const img = {
-    height: "80%",
-    objectFit: "cover",
-  };
-
-  const title = {
-    fontSize: "70px",
-  };
-
-  const desc = {
-    margin: "50px 0px",
-    fontSize: "20px",
-    fontWeight: "500",
-    letterSpacing: "3px",
-  };
-
-  const button = {
-    padding: "10px",
-    fontSize: "20px",
-    backgroundColor: "transparent",
-    cursor: "pointer",
-  };
 
   return (
     <div style={container}>
-      <div style={arrowLeft} onClick={() => handleClick("left")}>
+      <div style={{...arrows, left:"10px"}} onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </div>
       <div
@@ -118,7 +101,8 @@ const Slider = (props) => {
               width: "100vw",
               height: "100%",
               backgroundColor: `#${item.bg}`,
-            }} key={item.id}
+            }}
+            key={item.id}
           >
             <div style={imgContainer}>
               <img src={item.img} style={img} />
@@ -131,7 +115,7 @@ const Slider = (props) => {
           </div>
         ))}
       </div>
-      <div style={arrowRight} onClick={() => handleClick("right")}>
+      <div style={{...arrows, right:"10px"}} onClick={() => handleClick("right")}>
         <ArrowRightOutlined />
       </div>
     </div>

@@ -6,6 +6,7 @@
 body{
   max-width: 750px;
   min-width: 480px;
+  height: 100vh;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -47,7 +48,7 @@ margin-top: -5px;
 #guessField{
   color: #000;
   min-width: 70%;
-  min-height: 100px;
+  min-height: 50px;
   font-size: 50px;
   border: 5px solid #14727d;
   text-align: center;
