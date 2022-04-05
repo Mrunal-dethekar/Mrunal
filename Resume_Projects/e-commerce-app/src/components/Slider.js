@@ -71,12 +71,12 @@ const Slider = (props) => {
     }
   };
 
-  const automaticSlider = setTimeout(() => {
-    setTimeout(() => {
-      handleClick("right");
-      automaticSlider();
-    });
-  }, 3000);
+  // const automaticSlider = setTimeout(() => {
+  //   setTimeout(() => {
+  //     handleClick("right");
+  //     automaticSlider();
+  //   });
+  // }, 3000);
 
 
   return (
