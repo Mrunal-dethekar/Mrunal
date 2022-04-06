@@ -1,4 +1,5 @@
 import "./sidebar.scss";
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const Sidebar = () => {
   return (
@@ -10,7 +11,9 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <li>
-            <span>Dashboard</span>
+              <DashboardIcon/>
+            <span>
+              Dashboard</span>
           </li>
           <li>
             <span>Dashboard</span>
