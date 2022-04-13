@@ -1,4 +1,4 @@
-import { ADD_ITEM, DeleteItem } from "./action";
+import { ADD_ITEM } from "./action";
 import { DELETE_ITEM } from "./action";
 
 const intialState = [];

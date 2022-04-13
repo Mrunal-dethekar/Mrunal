@@ -1,33 +1,51 @@
-import './dataTable.scss'
-import { DataGrid } from '@mui/x-data-grid';
-import { userColumns , userRows } from "../../datatablesource"
+import "./dataTable.scss";
+import { DataGrid } from "@mui/x-data-grid";
+import { userColumns, userRows } from "../../datatablesource";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
+const DataTable = ({addNew}) => {
+  console.log(addNew);
 
-const DataTable = () => {
+  const [data, setData] = useState(userRows);
 
-  const actionColumn = [{
-    field:"action",
-    headerName:"action",
-    width:200,
-    renderCell:()=>(
-      <div className="cellAction">
-        <div className="viewButton">View</div>
-        <div className="deleteButton">Delete</div>
-      </div>
-    )
-  }]
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
+  };
+
+  const actionColumn = [
+    {
+      field: "action",
+      headerName: "action",
+      width: 200,
+      renderCell: (params) => (
+        <div className="cellAction">
+          <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <div className="viewButton">View</div>
+          </Link>
+          <div className="deleteButton" onClick={() => handleDelete(params.row.id)}>Delete</div>
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <div className='datatable'>
-            <DataGrid
-        rows={userRows}
+    <div className="datatable">
+      <div className="datatableTitle">
+        Add New User
+        <Link to={`/${addNew}/new`} className="link">
+          Add New
+        </Link>
+      </div>
+      <DataGrid
+        rows={data}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
       />
     </div>
-  )
-}
+  );
+};
 
-export default DataTable
+export default DataTable;
