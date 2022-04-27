@@ -7,7 +7,7 @@ const container = {
   display: "flex",
 };
 
-const left = {
+const left ={
   height: "100vh",
   width: "50%",
   padding: "10% 5%",
