@@ -9,7 +9,7 @@
 // }
 // }
 
-// let students = [
+// let students =[
 //   {
 //     name: 'John',
 //     batch: 'Batch 11',
