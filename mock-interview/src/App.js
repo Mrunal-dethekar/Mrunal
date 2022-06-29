@@ -1,92 +1,122 @@
-import React from "react";
-
-const container = {
-  height: "100vh",
-  width: "100vw",
-  backgroundColor: "#07073d",
-  display: "flex",
-};
-
-const left ={
-  height: "100vh",
-  width: "50%",
-  padding: "10% 5%",
-  position: "relative",
-};
-
-const right = {
-  height: "100vh",
-  width: "50%",
-  padding :"50px 10px"
-};
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { arrayLength, sendAnswer } from "./redux/action";
+import "./app.css";
 
 const App = () => {
+  const [currentQueIdx, setcurrentQueIdx] = useState(0);
+  const [submitAns, setSubmitAns] = useState([]);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.myReducer);
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      let res = await fetch("http://localhost:3000/questions");
+      let dataOrig = await res.json();
+      setData(dataOrig);
+      dispatch(arrayLength(dataOrig.length));
+    };
+    fetchApi();
+  }, []);
+
+  let previousQues = () => {
+    if (currentQueIdx > 0) {
+      setcurrentQueIdx(currentQueIdx - 1);
+    }
+  };
+
+  let nextQues = () => {
+    if (currentQueIdx < data.length - 1) {
+      setcurrentQueIdx(currentQueIdx + 1);
+    }
+  };
+
+  let changedRadio = (e) => {
+    let radioAns = e.target.value;
+    dispatch(sendAnswer({ index: currentQueIdx, option: radioAns }));
+  };
+
+  let submitFun = () => {
+    setSubmitAns(state.ans);
+  };
+
   return (
-    <div style={container}>
-      <div style={left}>
-        <span style={{ color: "#99abce" }}>
-          <i class="fa-solid fa-hand-wave"></i>Welcome to Proof.
-        </span>
-        <div style={{ fontSize: "3rem", color: "white" }}>
-          Boost your website conversions by 15% in under 15 minutes
+    <div className="app">
+      {data[currentQueIdx] && (
+        <>
+          <p>
+            Question no. {data[currentQueIdx].id} {data[currentQueIdx].qtext}
+            <br />
+          </p>
+          <br />
+          <form onChange={changedRadio}>
+            <input
+              type="radio"
+              id={`${data[currentQueIdx].options[0]}`}
+              name="fav_language"
+              value="a"
+              checked={state.ans[currentQueIdx] == "a" ? true : false}
+            />
+            <label for={`${data[currentQueIdx].options[0]}`}>
+              {data[currentQueIdx].options[0]}
+            </label>
+            <br />
+            <input
+              type="radio"
+              id={`${data[currentQueIdx].options[1]}`}
+              name="fav_language"
+              value="b"
+              checked={state.ans[currentQueIdx] == "b" ? true : false}
+            />
+            <label for={`${data[currentQueIdx].options[1]}`}>
+              {data[currentQueIdx].options[1]}
+            </label>
+            <br />
+            <input
+              type="radio"
+              id={`${data[currentQueIdx].options[2]}`}
+              name="fav_language"
+              value="c"
+              checked={state.ans[currentQueIdx] == "c" ? true : false}
+            />
+            <label for={`${data[currentQueIdx].options[2]}`}>
+              {data[currentQueIdx].options[2]}
+            </label>
+            <br />
+            <input
+              type="radio"
+              id={`${data[currentQueIdx].options[3]}`}
+              name="fav_language"
+              value="d"
+              checked={state.ans[currentQueIdx] == "d" ? true : false}
+            />
+            <label for={`${data[currentQueIdx].options[3]}`}>
+              {data[currentQueIdx].options[3]}
+            </label>
+          </form>
+        </>
+      )}
+
+      <button onClick={previousQues} disabled={currentQueIdx == 0}>
+        Previous
+      </button>
+      <button onClick={nextQues} disabled={currentQueIdx == data.length - 1}>
+        Next
+      </button>
+      {currentQueIdx == data.length - 1 && (
+        <button onClick={submitFun}>Submit</button>
+      )}
+      {submitAns.length ? (
+        <div>
+          Answer :{" "}
+          {submitAns.map((ele) => (
+            <span>{ele} </span>
+          ))}
         </div>
-        <div
-          style={{ color: "#99abce", padding: "20px 0", fontWeight: "bold" }}
-        >
-          We believe customer-obsessed marketing is the best kind of marketing.
-          Proof makes it easy. Make your website delightfully human.
-        </div>
-        <div
-          style={{
-            height: "60px",
-            padding: "5px",
-            backgroundColor: "white",
-            width: "700px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-          }}
-        >
-          <input
-            type="text"
-            style={{
-              width: "80%",
-              height: "40%",
-              padding: "10px",
-              border: "none",
-            }}
-            placeholder="Enter Your Email"
-          />
-          <button
-            style={{
-              width: "20%",
-              height: "100%",
-              backgroundColor: "blue",
-              border: "none",
-              color: "white",
-            }}
-          >
-            Try For Free
-          </button>
-        </div>
-        <div style={{ margin: "100px 0" }}>
-          <span style={{ color: "white", fontSize: "1.2rem" }}>
-            1,000+ people{" "}
-          </span>
-          <span style={{ color: "#99abce", opacity: "0.4" }}>
-            started a free trial in the last 30 days
-          </span>
-        </div>
-      </div>
-      <div style={right}>
-        <img
-          src="https://uploads-ssl.webflow.com/59318798d83bff2781822428/5f7b7e04b4ac83ac14c65bfa_Rachel%203x%20(1).jpg"
-          alt=""
-          srcset=""
-          style={{width:"500px", height:"600px", borderRadius:"10px"}}
-        />
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
