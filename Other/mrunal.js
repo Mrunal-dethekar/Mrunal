@@ -1,28 +1,123 @@
-[
-  {
+
+contacts = [
+    {
       "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-          "rate": 3.9,
-          "count": 120
-      },
-      "quantity": 4
-  },
-  {
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "companyTitle": "Java"
+    },
+    {
       "id": 2,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "price": 22.3,
-      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-      "rating": {
-          "rate": 4.1,
-          "count": 259
-      },
-      "quantity": 1
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "phone": "010-692-6593 x09125",
+      "website": "anastasia.net",
+      "companyTitle": "Management"
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "phone": "1-463-123-4447",
+      "website": "ramiro.info",
+      "companyTitle": "Marketing"
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "username": "Karianne",
+      "email": "Julianne.OConner@kory.org",
+      "phone": "493-170-9623 x156",
+      "website": "kale.biz",
+      "companyTitle": "Frontend Developer"
+    },
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "username": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca",
+      "phone": "(254)954-1289",
+      "website": "demarco.info",
+      "companyTitle": "Graphic Designer"
+    },
+    {
+      "id": 6,
+      "name": "Mrs. Dennis Schulist",
+      "username": "Leopoldo_Corkery",
+      "email": "Karley_Dach@jasper.info",
+      "phone": "1-477-935-8478 x6430",
+      "website": "ola.org",
+      "companyTitle": "Marketing"
+    },
+    {
+      "id": 7,
+      "name": "Kurtis Weissnat",
+      "username": "Elwyn.Skiles",
+      "email": "Telly.Hoeger@billy.biz",
+      "phone": "210.067.6132",
+      "website": "elvis.io",
+      "companyTitle": "Salse"
+    },
+    {
+      "id": 8,
+      "name": "Nicholas Runolfsdottir V",
+      "username": "Maxime_Nienow",
+      "email": "Sherwood@rosamond.me",
+      "phone": "586.493.6943 x140",
+      "website": "jacynthe.com",
+      "companyTitle": "Management"
+    },
+    {
+      "id": 9,
+      "name": "Glenna Reichert",
+      "username": "Delphine",
+      "email": "Chaim_McDermott@dana.io",
+      "phone": "(775)976-6794 x41206",
+      "website": "conrad.com",
+      "companyTitle": "Software Engineer"
+    },
+    {
+      "id": 10,
+      "name": "Clementina DuBuque",
+      "username": "Moriah.Stanton",
+      "email": "Rey.Padberg@karina.biz",
+      "phone": "024-648-3804",
+      "website": "ambrose.net",
+      "companyTitle": "Software Engineer"
+    },
+    {
+      "id": 11,
+      "name": "Nile Runolfsdottir V",
+      "username": "Nile S",
+      "email": "Nile@rosamond.me",
+      "phone": "586.493.6943 x140",
+      "website": "jacynthe.com",
+      "companyTitle": "Management"
+    },
+  ]
+
+  let arr= [];
+  let finalArr = [];
+
+  contacts.forEach((ele)=>{
+     arr.push(ele.name);
+  })
+  
+  arr = arr.sort();
+
+  for(i=0;i<arr.length;i++){
+    for(j=0;j<contacts.length;j++){
+      if(arr[i]==contacts[j].name){
+        finalArr.push(contacts[j]);
+        // contacts.splice(j,1);
+        break;
+      }
+    }
   }
-]
+
+  console.log(finalArr);

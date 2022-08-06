@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>आज़ादी का अमृत महोत्सव</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./FileSaver.min.js"></script>
+  <script src="./dom-to-image.min.js"></script>
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127456458-56"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127456458-56');
+</script>
+<style>
+  .maincontainer {
+    background: url(bg.jpg);
+    max-width: 450px;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    text-align: center;
+    /* padding:  0; */
+    color: #999;
+    padding-bottom: 60px;
+    box-shadow: 0 0 10px 1px rgb(0 0 0 / 14%), 0 1px 14px 2px rgb(0 0 0 / 12%), 0 0 5px -3px rgb(0 0 0 / 30%);
+  }
+
+  .footerbtn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* background-color: red; */
+    color: white;
+    text-align: center;
+  }
+
+  .pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+  }
+
+  .animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+  .pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+  }
+
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  .shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+  }
+
+  @keyframes shake {
+
+    0%,
+    100% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: translate3d(-10px, 0, 0);
+      transform: translate3d(-10px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transform: translate3d(10px, 0, 0);
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+
+    50% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    100% {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+
+  .certificate {
+    font-family: cursive;
+    font-size: 2.8em;
+  }
+
+  .to {
+    font-size: 1em;
+  }
+
+  .name {
+    font-size: 1.7em;
+  }
+
+  .docs-creator {
+    color: white;
+    padding: 14px 0px;
+    background: green;
+  }
+
+  .download {
+    width: 50%;
+    margin: auto;
+    background: brown;
+    /* padding: 3px 1px; */
+    /* height: 45px; */
+    margin: 8px auto;
+    padding: 6px 0;
+    color: white;
+  }
+
+  a,
+  a:hover,
+  a:visited,
+  a:focus {
+    text-decoration: none;
+  }
+</style>
+
+<body>
+  <div id="my-node" class="maincontainer pt-5">
+    <p class="text-center font-weight-bold">|| अब हर घर होगा तिरंगा ||</p>
+    <img src="logo.png" width="90%" alt="" srcset="">
+    <div class="py-1 my-3">
+      <div class="certificate font-weight-bold">Certificate</div>
+      <div class="to font-weight-bold">To</div>
+      <div class="name font-weight-bold">jjjjj</div>
+    </div>
+    <p class="text-center px-5">
+      आइये उन सभी लोगों को याद करे जिन्होंने हमारे देश के लिए अपने प्राणों की आहुति दी। <br> आपको स्वतंत्रता दिवस 2022
+      की शुभकामनाएं !
+    </p>
+    <img src="lal.png" width="100%" alt="" srcset="">
+    <div class="sharing pt-1">
+      <h3 class="font-italic text-danger">Shared By :</h3>
+      <p class="m-0 p-0" style="font-size: 1.3em;">Sandip M.Gumpla</p>
+    </div>
+    <p>Presented by : open-this.in</p>
+  </div>
+  <div class="footerbtn">
+    <a id="foo" class="bg">
+      <div class="download">
+        <p class="m-0">Download Certificate</p>
+      </div>
+    </a>
+    <a id="whatsapp"
+      href="whatsapp://send?text=🇮🇳 *अब हर घर होगा तिरंगा* 🇮🇳 %0A%0A *मैंने तो आजादी का अमृत महोत्सव का Certificate बना लिया* %0A *क्या आप ने अपना बनाया ?* %0A %0A *निचे दिए गये लिंक पर जाकर मेरा Certificate देखो और अपना भी बना लो* %0A %0A👇👇 %0A open-this.in/?n=jjjjj">
+      <div class="docs-creator"><img width="35px" height="35px" src="https://click-it.me/img/whatsapp.gif?v=400385"><b
+          style="font-size: 21px;">👉 यहाँ से सबको भेजो 👈</b> <img width="35px" height="35px"
+          src="https://click-it.me/img/whatsapp.gif?v=400385"></div>
+    </a>
+  </div>
+</body>
+<script>
+  var share = document.getElementById('whatsapp');
+  var download = document.getElementById('foo');
+  var count = 1;
+  share.onclick = function () {
+    if (count) {
+      count--;
+    }
+  }
+  download.onclick = function () {
+    if (count) {
+      alert('कृपया पहले इसको सबको भेजे और स्टेटस पर लगाये फिर अपना certificate डाउनलोड करे \n \n certificate डाउनलोड करके अपने Whatsapp स्टेटस पर भी लगाये');
+    } else {
+      domtoimage.toBlob(document.getElementById('my-node'))
+        .then(function (blob) {
+          window.saveAs(blob, 'amrit.png');
+        });
+    }
+  }
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+<script src="./integrate.js?v=4003885"></script>
+
+</html>
